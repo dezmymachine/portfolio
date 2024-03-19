@@ -3,7 +3,7 @@ import db from "../db/connection.js";
 import { ObjectId } from "mongodb";
 
 const router = Router();
-const EXPERIENCES_COLLECTION = db.collection("experiences");
+const EXPERIENCES_COLLECTION = db.collection("experience");
 
 //Endpoint for getting list of experiences
 
@@ -27,6 +27,7 @@ router.post("/", async (req, res) => {
       experience: req.body.experience,
       years: req.body.years,
       description: req.body.description,
+      organisation: req.body.organisation,
       location: req.body.location,
     };
     let result = await EXPERIENCES_COLLECTION.insertOne(newExperience);
@@ -50,6 +51,7 @@ router.patch("/:id", async (req, res) => {
     };
 
     let result = await EXPERIENCES_COLLECTION.updateOne(query, updates);
+    res.send(result).status(201);
   } catch (error) {
     console.error(error);
   }
