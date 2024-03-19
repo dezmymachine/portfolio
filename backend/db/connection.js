@@ -16,7 +16,7 @@ try {
   await client.db("admin").command({ ping: 1 });
   console.log("You've successfully connected to Mongodb");
 } catch (error) {
-  console.log(error);
+  console.error(error);
 }
 
 let db = client.db(DATABASE_NAME);
