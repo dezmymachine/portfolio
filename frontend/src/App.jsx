@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <h1 className="text-center font-bold text-2xl text-red-800">
-        Hello world
+       Hi earth
       </h1>
     </>
   );
