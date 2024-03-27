@@ -42,6 +42,7 @@ router.patch("/:id", async (req, res) => {
       $set: {
         skill: req.body.skill,
         proficiency: req.body.proficiency,
+        description: req.body.description,
       },
     };
 
@@ -61,5 +62,10 @@ router.delete("/:id", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
+
+  router.delete("/", async (req, res) => {
+    let result = await SKILLS_COLLECTION.deleteMany();
+    res.send(result).status(204);
+  });
 });
 export default router;
