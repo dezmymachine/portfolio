@@ -26,7 +26,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     let newblog = {
-      title: req.body.blog,
+      title: req.body.title,
       blogcontent: req.body.blogcontent,
       date: req.body.date,
       image: req.body.image,
