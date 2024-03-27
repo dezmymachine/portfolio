@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
       title: req.body.title,
       blogcontent: req.body.blogcontent,
       date: req.body.date,
-      image: req.body.image,
+      image: req.file.image,
     };
     let result = await BLOGS_COLLECTION.insertOne(newblog);
     res.send(result).status(201);
