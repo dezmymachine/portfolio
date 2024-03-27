@@ -24,11 +24,9 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     let newExperience = {
-      experience: req.body.experience,
+      role: req.body.role,
       years: req.body.years,
-      description: req.body.description,
       organisation: req.body.organisation,
-      location: req.body.location,
     };
     let result = await EXPERIENCES_COLLECTION.insertOne(newExperience);
     res.send(result).status(201);
@@ -43,10 +41,9 @@ router.patch("/:id", async (req, res) => {
     const query = { _id: new ObjectId(req.params.id) };
     const updates = {
       $set: {
-        experience: req.body.experience,
+        role: req.body.role,
         years: req.body.years,
-        description: req.body.description,
-        location: req.body.location,
+        organisation: req.body.organisation,
       },
     };
 

@@ -42,6 +42,7 @@ router.patch("/:id", async (req, res) => {
       $set: {
         skill: req.body.skill,
         proficiency: req.body.proficiency,
+        description: req.body.description,
       },
     };
 
