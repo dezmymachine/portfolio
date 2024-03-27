@@ -47,7 +47,7 @@ router.patch("/:id", async (req, res) => {
         title: req.body.blog,
         blogcontent: req.body.blogcontent,
         date: req.body.date,
-        image: req.body.path,
+        image: req.file.path,
       },
     };
 
