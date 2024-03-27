@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
       achievement: req.body.achievement,
       description: req.body.description,
     };
-    let result = await achievementS_COLLECTION.insertOne(newAchievement);
+    let result = await ACHIEVEMENT_COLLECTION.insertOne(newAchievement);
     res.send(result).status(201);
   } catch (error) {
     console.error(error);
