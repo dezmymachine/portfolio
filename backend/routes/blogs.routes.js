@@ -23,13 +23,13 @@ router.get("/:id", async (req, res) => {
 });
 
 //Endpoint for adding a single blog
-router.post("/", async (req, res) => {
+router.post("/", imageUpload.single("image"), async (req, res) => {
   try {
     let newblog = {
       title: req.body.title,
       blogcontent: req.body.blogcontent,
       date: req.body.date,
-      image: req.file.image,
+      image: req.body.image,
     };
     let result = await BLOGS_COLLECTION.insertOne(newblog);
     res.send(result).status(201);
