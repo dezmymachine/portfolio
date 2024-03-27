@@ -1,9 +1,11 @@
 import { Router } from "express";
 import db from "../db/connection.js";
 import { ObjectId } from "mongodb";
+import multer from "multer";
 
 const router = Router();
 const BLOGS_COLLECTION = db.collection("blogs");
+const imageUpload = multer({ dest: "uploads/images" });
 
 //Endpoint for getting list of blogs
 
@@ -17,7 +19,7 @@ router.get("/:id", async (req, res) => {
   let query = { _id: new ObjectId(req.params.id) };
   let result = await BLOGS_COLLECTION.findOne(query);
 
-  !result ? res.send("Not found").status(404) : res.send(refdsult).status(200);
+  !result ? res.send("Not found").status(404) : res.send(result).status(200);
 });
 
 //Endpoint for adding a single blog
@@ -26,6 +28,8 @@ router.post("/", async (req, res) => {
     let newblog = {
       title: req.body.blog,
       blogcontent: req.body.blogcontent,
+      date: req.body.date,
+      image: req.body.image,
     };
     let result = await BLOGS_COLLECTION.insertOne(newblog);
     res.send(result).status(201);
@@ -42,6 +46,8 @@ router.patch("/:id", async (req, res) => {
       $set: {
         title: req.body.blog,
         blogcontent: req.body.blogcontent,
+        date: req.body.date,
+        image: req.body.image,
       },
     };
 
