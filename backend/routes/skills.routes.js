@@ -61,5 +61,10 @@ router.delete("/:id", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
+
+  router.delete("/", async (req, res) => {
+    let result = await SKILLS_COLLECTION.deleteMany();
+    res.send(result).status(204);
+  });
 });
 export default router;
